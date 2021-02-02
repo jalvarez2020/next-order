@@ -1,6 +1,6 @@
 export default {
   LayoutContainer: {
-    default:'flex flex-col items-center space-y-5'
+    default:'w-screen h-full flex flex-col items-center space-y-5'
   },
   HeaderContainer: {
     default: 'block p-8 max-w-md mx-auto bg-white rounded-xl shadow-md items-center space-x-8',

@@ -41,7 +41,7 @@ const DefaultHeader = () => {
 };
 
 const SplitHeader = () => {
-	return(
+	return (
 		<div
 			className={pageConfig.HeaderContainer.split}>
 			<Link href='/'>
