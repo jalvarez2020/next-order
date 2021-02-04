@@ -8,7 +8,7 @@ const BaseLayout = (props) => {
 	return (
 		<div className={pageConfig.LayoutContainer.default}>
 			<Head>
-				<title>Javi's Portfolio</title>
+				<title>New App Co</title>
 			</Head>
 			<LogoLeft />
 			<SplitHeader />
