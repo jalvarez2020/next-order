@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import numFloat from '../components/helpers/numfloat';
 import { BaseLayout } from '../components/layouts/BaseLayout';
 
 let newHeader = new Headers();
@@ -33,25 +34,10 @@ export default function Home({ items }) {
 					className={
 						'w-full h-screen grid grid-cols-3 justify-evenly m-3 gap-5'
 					}>
-					{items.data.map(({ id, name, price }) => {
-						let num = price.toString().split('');
-						let total;
-						if (price === 0) {
-								total = price.toFixed(2);
-								price = total;
-						}
-						if (num.length === 3) {
-							num.splice(1 , 0 , '.');
-							total = num.join("")
-							total = parseFloat(total).toFixed(2);
-							price = total;
-						}
-						else if (num.length === 4) {
-							num.splice(2, 0, '.');
-							total = num.join("")
-							total = parseFloat(total).toFixed(2);
-							price = total;
-						}
+					{items.data.map(({ id, name, price, alternate_name }) => {
+						// let total = price * .01
+						// price = total.toFixed(2)
+						price = numFloat(price);
 						return (
 							<div
 								className={
@@ -72,7 +58,7 @@ export default function Home({ items }) {
 									<h6>{price}</h6>
 									</div>
 									<p className={'text-sm font-light'}>
-										Different types of salads from around the world
+										{alternate_name}
 									</p>
 									<button
 										className={
