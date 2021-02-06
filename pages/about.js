@@ -1,40 +1,32 @@
 import Image from 'next/image';
+import numFloat from '../components/helpers/numfloat';
+import  apiConfig  from '../components/fetchApi';
 import { BaseLayout } from '../components/layouts/BaseLayout';
 
-
-let newHeader = new Headers();
-newHeader.append("Content-Type", "application/json");
-newHeader.append("Authorization", `${process.env.SECRET_KEY}`);
-
-let reqOptions = {
-	method: "GET",
-	headers: newHeader,
-	redirect: 'follow'
-}
-
 export async function getStaticProps() {
-	const res = await fetch(`http://localhost:6000/v1/items`, reqOptions);
-	const items = await res.json();
-	return {
-		props: {
-			items,
-		},
-	};
+	return apiConfig.getAllItems();
 }
+
 
 export default function Home({ items }) {
-	console.log("CLOVER-DATA", items)
+console.log('ABOUT', items)
 	return (
-		<BaseLayout >
+		<BaseLayout>
 			<div className={'w-9/12 m-auto p-10 shadow-2xl rounded-xl overflow-auto'}>
 				<h2>Most Popular :</h2>
 				<div
 					className={'w-20 h-3 border-gray-800 border-b-2 border-solid'}></div>
 				<div
-					className={'w-full h-screen grid grid-cols-3 justify-evenly m-3 gap-5'}>
-					{items.data.map(({ id, name, price }) => {
+					className={
+						'w-full h-screen grid grid-cols-3 justify-evenly m-3 gap-5'
+					}>
+					{items.data.map(({ id, name, price, alternate_name }) => {
+						price = numFloat(price);
 						return (
-							<div className={'w-96 h-25 flex mx-auto my-2 p-0 shadow-md rounded-xl'}>
+							<div
+								className={
+									'w-96 h-25 flex mx-auto my-2 p-0 shadow-md rounded-xl'
+								}>
 								<Image
 									className={'rounded-l-xl'}
 									key={id}
@@ -45,9 +37,19 @@ export default function Home({ items }) {
 									quality
 								/>
 								<div className={'h-32 w-64 ml-4'}>
-                  <h6>{name}</h6>
-									<p className={'text-sm font-light'}>Different types of salads from around the world</p>
-                  <button className={'h-8 w-28 bg-yellow-500 m-4 p-1 text-sm text-white shadow-lg rounded-lg'}>Order Now</button>
+									<div className={'flex justify-between'}>
+									<h6>{name}</h6>
+									<h6>{price}</h6>
+									</div>
+									<p className={'text-sm font-light'}>
+										{alternate_name}
+									</p>
+									<button
+										className={
+											'h-8 w-28 bg-yellow-500 m-4 p-1 text-sm text-white shadow-lg rounded-lg'
+										}>
+										Order Now
+									</button>
 								</div>
 							</div>
 						);
