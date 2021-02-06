@@ -1,29 +1,15 @@
 import Image from 'next/image';
 import numFloat from '../components/helpers/numfloat';
+import  apiConfig  from '../components/fetchApi';
 import { BaseLayout } from '../components/layouts/BaseLayout';
 
-let newHeader = new Headers();
-newHeader.append('Content-Type', 'application/json');
-newHeader.append('Authorization', `${process.env.SECRET_KEY}`);
-
-let reqOptions = {
-	method: 'GET',
-	headers: newHeader,
-	redirect: 'follow',
-};
-
 export async function getStaticProps() {
-	const res = await fetch(`http://localhost:6000/v1/items`, reqOptions);
-	const items = await res.json();
-	return {
-		props: {
-			items,
-		},
-	};
+	return apiConfig.getAllItems();
 }
 
+
 export default function Home({ items }) {
-	console.log('CLOVER-DATA', items);
+console.log('ABOUT', items)
 	return (
 		<BaseLayout>
 			<div className={'w-9/12 m-auto p-10 shadow-2xl rounded-xl overflow-auto'}>
@@ -35,8 +21,6 @@ export default function Home({ items }) {
 						'w-full h-screen grid grid-cols-3 justify-evenly m-3 gap-5'
 					}>
 					{items.data.map(({ id, name, price, alternate_name }) => {
-						// let total = price * .01
-						// price = total.toFixed(2)
 						price = numFloat(price);
 						return (
 							<div
