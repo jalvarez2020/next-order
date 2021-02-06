@@ -9,7 +9,6 @@ export async function getStaticProps() {
 
 
 export default function Home({ items }) {
-console.log('ABOUT', items)
 	return (
 		<BaseLayout>
 			<div className={'w-9/12 m-auto p-10 shadow-2xl rounded-xl overflow-auto'}>
