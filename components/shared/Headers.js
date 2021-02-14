@@ -9,7 +9,7 @@ const DefaultHeader = () => {
 			<Link href='/'>
 				<a className={pageConfig.LinkText.default}> All Menus: </a>
 			</Link>
-			<Link href='/about'>
+			<Link href='/salads'>
 				<a className={pageConfig.LinkText.default}> Salads </a>
 			</Link>
 			<Link href='/order'>
@@ -47,7 +47,8 @@ const SplitHeader = () => {
 			<Link href='/'>
 				<a className={pageConfig.LinkText.default}> All Menus:</a>
 			</Link>
-			<Link href='/about'>
+			<div className={'inline-block h-5 border-gray-400 border-solid border-l-2 '}></div>
+			<Link href='/salads'>
 				<a className={pageConfig.LinkText.default}> Salads </a>
 			</Link>
 			<Link href='/order'>
@@ -74,10 +75,10 @@ const SplitHeader = () => {
 			<Link href='/login'>
 				<a className={pageConfig.LinkText.default}> Login </a>
 			</Link>
-			<div className={'inline-flex w-1/3'}>
-				<div className={'inline-flex m-auto items-center'}>
+			<div className={'inline-flex w-1/4'}>
+				<div className={'w-1 inline-flex items-center'}>
 					<div className={'pr-2'}>search:</div>
-					<input type='search'  className={'w-auto h-9 bg-white rounded-xl shadow-md border-gray-300 border-2'} />
+					<input type='search'  className={'w-auto h-9 bg-white rounded-xl shadow-md border-gray-300 border-2 '} />
 				</div>
 			</div>
 		</div>

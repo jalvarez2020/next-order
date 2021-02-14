@@ -4,7 +4,7 @@ export default {
   },
   HeaderContainer: {
     default: 'block p-8 max-w-md mx-auto bg-white rounded-xl shadow-md items-center space-x-8',
-    split: 'container w-full p-1 bg-white items-left space-x-8'
+    split: 'container w-full p-1 bg-white space-x-8'
   },
   LinkText: {
     default:'text-gray-700 hover:text-blue active:text-blue-100'
